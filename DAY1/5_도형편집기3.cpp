@@ -10,11 +10,24 @@
 
 class Shape
 {
+	int color;
 public:
 	virtual ~Shape() {}
 
+	// 아래 멤버 함수는 virtual 로 할까요 ? non-virtual 로 할까요 ?
+	// => 파생클래스가 override 할 이유 없습니다. non-virtual
+	// => virtual로 해도 에러는 아니고, 실행시 동작에는 문제 없지만
+	// => 가상함수는 오버헤드가 있습니다. 필요할때만 사용해야 합니다.
+	void set_color(int c) { color = c; }
+
+	// 아래 함수는 모든 도형이 override 하게 됩니다. virtual 이어야 합니다.
+	virtual int get_area() const { return 0; }
+
 	virtual void draw() { std::cout << "draw Shape\n"; }
 };
+
+
+
 
 
 
