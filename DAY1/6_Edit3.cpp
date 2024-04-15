@@ -12,7 +12,9 @@
 struct IValidator
 {
 	virtual bool validate(const std::string& s, char c) = 0;
+
 	virtual bool is_complete(const std::string& s) { return true; }
+
 	virtual ~IValidator() {}
 };
 
@@ -24,7 +26,13 @@ struct IValidator
 class Edit
 {
 	std::string data;
+
+	//--------------------------------------------
+	IValidator* pval = nullptr; // 값의 유효성을 판단할 객체
 public:
+	void set_validator(IValidator* p) { pval = p; }
+	//--------------------------------------------
+
 	std::string get_data()
 	{
 		data.clear();
@@ -33,9 +41,9 @@ public:
 		{
 			char c = _getch();
 
-			if (c == 13) break; 
+			if (c == 13 && (pval == nullptr || pval->is_complete(data)) ) break;
 
-			if (isdigit(c))
+			if ( pval == nullptr || pval->validate(data, c) ) // 값의 유효성 판단을 다른 객체의 위임
 			{
 				data.push_back(c);
 				std::cout << c;
