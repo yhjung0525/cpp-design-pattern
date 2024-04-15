@@ -5,6 +5,7 @@
 // => 문법적인 요구조건이 아닌
 // => 디자인적인 요구 조건.
 
+// 4. 파생 클래스가 override 하게되는 함수는 "반드시 가상함수"로 설계되어야 한다.
 
 
 class Shape
@@ -12,8 +13,10 @@ class Shape
 public:
 	virtual ~Shape() {}
 
-	void draw() { std::cout << "draw Shape\n"; }
+	virtual void draw() { std::cout << "draw Shape\n"; }
 };
+
+
 
 class Rect : public Shape
 {
