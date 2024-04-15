@@ -3,14 +3,23 @@
 #include <vector>
 #include <conio.h> 
 
-class MenuItem
-{
+class BaseMenu
+{	
 	std::string title;
-	int id;
 public:
-	MenuItem(const std::string& title, int id) : title(title), id(id) {}
+	BaseMenu(const std::string& title) 
+		: title(title) {}
+
+	virtual ~BaseMenu() {}
 
 	std::string get_title() const { return title; }
+};
+
+class MenuItem : public BaseMenu
+{
+	int id;
+public:
+	MenuItem(const std::string& title, int id) : BaseMenu(title), id(id) {}
 
 	// 메뉴 선택시 호출될 함수
 	void command()
@@ -21,14 +30,13 @@ public:
 	}
 };
 
-class PopupMenu
+class PopupMenu : public BaseMenu
 {
-	std::string title;
-	std::vector<MenuItem*> v;
+	std::vector<BaseMenu*> v;
 public:
-	PopupMenu(const std::string& title) : title(title) {}
+	PopupMenu(const std::string& title) : BaseMenu(title) {}
 
-	void add(MenuItem* m) { v.push_back(m); }
+	void add(BaseMenu* m) { v.push_back(m); }
 
 	void command()
 	{
