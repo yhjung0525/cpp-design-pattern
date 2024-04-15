@@ -31,7 +31,7 @@ int main()
 		else if (cmd == 9)
 		{
 			for (auto p : v)
-				v->draw();
+				p->draw();
 		}
 	}
 }
