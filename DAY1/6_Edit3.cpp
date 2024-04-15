@@ -66,7 +66,14 @@ public:
 	{
 		return s.size() < max_value && isdigit(c);
 	}
+
+	bool is_complete(const std::string& s) override
+	{
+		return s.size() == max_value;
+	}
 };
+
+
 
 int main()
 {	
