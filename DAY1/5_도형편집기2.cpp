@@ -30,10 +30,14 @@ int main()
 		else if (cmd == 2) v.push_back(new Circle);
 		else if (cmd == 9)
 		{
-			for (auto p : v)
-				p->draw();
+			for (auto p : v) // Shape* p 인데
+				p->draw();   // Shape 안에는 draw()가 없다.
 		}
 	}
 }
 // 왜 이코드가 에러 일까요 ?
+// => p->draw() 에서 p 는 Shape* 인데, Shape 안에는 draw 가 없다.
+// 
 // 해결책은 뭘까요 ?? 
+// 1. Shape* 인 p 를 Rect* 또는 Circle* 로 캐스팅 해서 사용하자. ==> 절대 이렇게 하지마세요
+// 2. Shape 안에도 draw() 를 만들자. ==> 답..
