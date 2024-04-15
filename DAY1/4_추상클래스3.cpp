@@ -32,6 +32,12 @@ public:
 	void take() { std::cout << "Take HD Picture" << std::endl; }
 };
 
+class UHDCamera : public ICamera
+{
+public:
+	void take() { std::cout << "Take UHD Picture" << std::endl; }
+};
+
 int main()
 {
 	People p;
@@ -40,6 +46,11 @@ int main()
 
 	HDCamera hc;
 	p.use_camera(&hc); 
+
+	UHDCamera uhc;
+	p.use_camera(&uhc); // ok.. 나중에 추가된 클래스라도
+						// People 코드 수정없이 사용가능
+
 }
 
 
