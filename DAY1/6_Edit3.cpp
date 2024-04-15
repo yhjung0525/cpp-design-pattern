@@ -49,8 +49,8 @@ public:
 				std::cout << c;
 			}
 		}
-		std::cout << "\n"
-			return data;
+		std::cout << "\n";
+		return data;
 	}
 };
 
