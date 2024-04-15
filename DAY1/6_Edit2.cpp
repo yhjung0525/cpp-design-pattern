@@ -38,11 +38,21 @@ public:
 	}
 };
 
-
+// 변하는 것을 가상함수로 만드는 코드의 의도!
+// => 변경하고 싶으면 파생 클래스를 만들어서 가상함수를 override 하라는 것
+class NumEdit : public Edit
+{
+public:
+	bool validate(char c) override
+	{
+		return isdigit(c);
+	}
+};
 
 int main()
 {
-	Edit e;
+//	Edit e;
+	NumEdit e;
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
