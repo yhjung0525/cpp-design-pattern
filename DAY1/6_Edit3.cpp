@@ -81,6 +81,10 @@ int main()
 	LimitDigitValidator v(5);
 	e.set_validator(&v);
 
+	// 실행하다가 다른 정책으로 교체
+	LimitDigitValidator v2(15);
+	e.set_validator(&v2);
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
