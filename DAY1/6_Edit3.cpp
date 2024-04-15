@@ -54,11 +54,26 @@ public:
 	}
 };
 
+// Edit 의 Validation 정책을 변경하려면
+// => Validation 정책을 담은 "정책 클래스" 를 만들어서 전달하면 됩니다.
+class LimitDigitValidator : public IValidator
+{
+	int max_value;
+public:
+	LimitDigitValidator(int n) : max_value(n) {}
 
+	bool validate(const std::string& s, char c) override
+	{
+		return s.size() < max_value && isdigit(c);
+	}
+};
 
 int main()
-{
+{	
 	Edit e;
+	LimitDigitValidator v(5);
+	e.set_validator(&v);
+
 	while (1)
 	{
 		std::cout << e.get_data() << std::endl;
