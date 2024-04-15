@@ -4,6 +4,8 @@ class Animal
 {
 public:
 	int age;
+	virtual ~Animal() {} // 모든 기반 클래스는 소멸자가 가상함수 이어야
+						 // 합니다.
 };
 class Dog : public Animal
 {
@@ -35,6 +37,8 @@ int main()
 	// => 실행시간에 p가 가리키는 곳을 조사후
 	// => Dog 가 맞는 경우만 주소 반환
 	// => Dog 가 아니면 0 반환
+	// => "가상함수가 있는 타입" 에 대해서만 사용가능.
+	//    타입 정보를 "가상함수 테이블" 에 보관하기 때문에. 
 	Dog* pd = dynamic_cast<Dog*>(p);
 
 	std::cout << pd << std::endl;
