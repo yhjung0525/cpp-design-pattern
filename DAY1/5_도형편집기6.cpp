@@ -4,7 +4,8 @@
 // 7. 리팩토링 분야의 아주 중요한 용어 입니다. 잘 생각해 보세요
 
 // "replace conditional with polymorphism"
-//  
+//  "조건문을 다형성(가상함수) 로 변경해라"
+//   도형편집기5.cpp => 도형편집기6.cpp 로..   if (cmd ==8) 부분에서
 
 
 class Shape
