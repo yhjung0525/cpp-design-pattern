@@ -29,7 +29,13 @@ int main()
 	// => 따라서, 상속관계의 타입이면 무조건 허용!!
 	// => p가 가리키는 곳이 Dog 가 아니라도 성공하는데, 반환된 주소 사용시
 	//    문제가 될수 있다.
-	Dog* pd = static_cast<Dog*>(p);
+//	Dog* pd = static_cast<Dog*>(p);
+
+	// dynamic_cast : 실행시간 캐스팅
+	// => 실행시간에 p가 가리키는 곳을 조사후
+	// => Dog 가 맞는 경우만 주소 반환
+	// => Dog 가 아니면 0 반환
+	Dog* pd = dynamic_cast<Dog*>(p);
 
 	std::cout << pd << std::endl;
 
