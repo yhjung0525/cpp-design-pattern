@@ -18,6 +18,7 @@ class People
 {
 public:	
 	void use_camera(Camera* p) { p->take(); }
+	void use_camera(HDCamera* p) { p->take(); }
 };
 
 int main()
