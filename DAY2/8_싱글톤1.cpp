@@ -36,6 +36,10 @@ int main()
 //	Cursor c3 = c1; // 복사 생성자를 사용한 객체 생성
 }
 
+// 위 코드가 "Meyer's singleton" 입니다.
+// => effective C++의 저자인 "scott meyer" 가 처음 제안한 코드
+// => 오직 한개의 객체가 static 지역변수
+// => C++ 에서 가장 좋은 코드로 알려진 코드. 
 
 
 
