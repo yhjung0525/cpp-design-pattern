@@ -29,14 +29,18 @@ public:
 
 	static Cursor& get_instance()
 	{
-		lock_guard<std::mutex> g(mtx);
-
+		{
+			std::lock_guard<std::mutex> g(mtx);
+//			lock_guard<std::mutex> g(mtx);	// 생성자에서 mtx.lock()수행.
+											// 소멸자에서 mtx.unlock()
+											// 함수 수행중 예외등이 발생해도 소멸자호출보장
 //		mtx.lock();
 
-		if (sinstance == nullptr)
-			sinstance = new Cursor;
+			if (sinstance == nullptr)
+				sinstance = new Cursor;
 
-//		mtx.unlock();
+			//		mtx.unlock();
+		}
 
 		return *sinstance;
 	}
