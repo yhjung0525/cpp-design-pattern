@@ -67,3 +67,14 @@ int main()
 	DrawFlower flower(&frame);
 	flower.draw();
 }
+
+// Composite 와 Decorator 는 결국 재귀적인 특징이 있습니다.
+// => 재귀적인 포함을 위해서 공통의 기반 클래스 설계
+// => 차이점이 뭔가요 ?
+
+// 의도에 따라 패턴의 이름이 다릅니다. 항상 "의도(intent)" 가 핵심
+
+// composite : 재귀적 포함을 사용한 "복합객체 만들기", 즉 객체의 포함관계
+// decorator : 재귀적 포함을 사용해서 "객체에 기능 추가"
+
+// 즉, class Diagram 이 유사하지만 "의도가 완전히 다릅니다."
