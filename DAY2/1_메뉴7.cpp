@@ -3,6 +3,9 @@
 #include <vector>
 #include <conio.h> 
 
+// 메뉴6 : 안전성을 위한 모델. root->submenu(1)->add() 를 하려면 캐스팅 필요
+// 메뉴7 : 편의성을 위한 모델. root->submenu(1)->add() 를 하려면 캐스팅 없이 사용가능
+
 // 예외를 위한 클래스
 class UnsupportedOperation {};
 
@@ -98,15 +101,9 @@ int main()
 
 	pm1->add(new MenuItem("RED", 11));
 
-	// 아래 기능에 대해서 생각해 봅시다
-	// auto m1 = root->submenu(1); // "색상" PopupMenu 의 포인터 꺼내기
+	// 메뉴6 과 다르게, 아래 처럼 캐스팅 없이 사용가능 합니다.
+	root->submenu(0)->add(new MenuItem("GREEN", 12));  
 
-	// 아래 한줄에 대해서 생각해 보세요!!
-	// => 현재 코드는 add 가 PopupMenu 에만 있으므로
-	// => 아래 처럼 사용할수 없고, 캐스팅해야 합니다.
-//	root->submenu(1)->add(new MenuItem("GREEN", 12));  // error
-
-	static_cast<PopupMenu*>(root->submenu(1))->add(new MenuItem("GREEN", 12));  // error
 
 	root->command();
 

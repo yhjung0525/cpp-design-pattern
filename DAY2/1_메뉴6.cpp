@@ -89,9 +89,9 @@ int main()
 	// 아래 한줄에 대해서 생각해 보세요!!
 	// => 현재 코드는 add 가 PopupMenu 에만 있으므로
 	// => 아래 처럼 사용할수 없고, 캐스팅해야 합니다.
-//	root->submenu(1)->add(new MenuItem("GREEN", 12));  // error
+//	root->submenu(0)->add(new MenuItem("GREEN", 12));  // error
 
-	static_cast<PopupMenu*>(root->submenu(1))->add(new MenuItem("GREEN", 12));  // error
+	static_cast<PopupMenu*>(root->submenu(0))->add(new MenuItem("GREEN", 12));  // error
 
 	root->command();
 
