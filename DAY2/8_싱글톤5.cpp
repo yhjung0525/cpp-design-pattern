@@ -2,32 +2,41 @@
 #include <mutex>
 
 // CRTP 적용
+// => Curiously Recurring Template Pattern
+// => 기반 클래스에서 "파생 클래스 이름을 사용" 할수 있게 하는 패턴!!
 
-
-class Cursor
+template<typename T>
+class Singleton
 {
-private:
-	Cursor() {}
-	Cursor(const Cursor&) = delete;
-	void operator=(const Cursor&) = delete;
+protected:
+	Singleton() {}
+	Singleton(const Singleton&) = delete;
+	void operator=(const Singleton&) = delete;
 
-	static Cursor* sinstance;
+	static T* sinstance;		// <=== !!!
 	static std::mutex mtx;
 public:
 
-	static Cursor& get_instance()
+	static T& get_instance()	// <=== !!!
 	{
 		std::lock_guard<std::mutex> g(mtx);
 
 		if (sinstance == nullptr)
-			sinstance = new Cursor;
+			sinstance = new T;	// <=== !!!
 
 		return *sinstance;
 	}
 };
-Cursor* Cursor::sinstance = nullptr;
-std::mutex Cursor::mtx;
 
+template<typename T> T* Singleton<T>::sinstance = nullptr;
+template<typename T> std::mutex Singleton<T>::mtx;
+
+
+// Mouse 클래스도 힙에 만드는 싱글톤으로 하고 싶다.
+class Mouse : public Singleton< Mouse  >
+{
+
+};
 
 int main()
 {
