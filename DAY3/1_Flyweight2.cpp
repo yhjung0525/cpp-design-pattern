@@ -38,12 +38,10 @@ public:
 	}
 };
 
-
-
-
-
 int main()
 {
+	// IOS 개발에 사용되는 "cocoa touch" 라이브러리에 UIImage 클래스가 
+	// 아래와 같이 사용합니다.
 	Image* img1 = Image::Create("www.naver.com/a.png");
 	img1->Draw();
 
