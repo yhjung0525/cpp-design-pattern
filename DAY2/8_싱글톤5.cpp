@@ -36,12 +36,12 @@ template<typename T> std::mutex Singleton<T>::mtx;
 class Mouse : public Singleton< Mouse  >
 {
 
-};
+};   
 
 int main()
 {
-	Cursor& c1 = Cursor::get_instance();
-	Cursor& c2 = Cursor::get_instance();
+	Mouse& c1 = Mouse::get_instance();
+	Mouse& c2 = Mouse::get_instance();
 
 }
 
