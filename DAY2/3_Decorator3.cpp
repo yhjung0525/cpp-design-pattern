@@ -51,7 +51,12 @@ int main()
 	DrawFrame frame(&pic); 
 	frame.draw();
 
-	DrawFlower flower(&pic);
+//	DrawFlower flower(&pic);
+	DrawFlower flower(&frame); // 기능이 추가된 객체에 다시 기능추가		
+							   // 현재는 에러!!
+							   // "복습 하실때 현재 클래스 구조를 그림을 그려서"
+							   // 왜 에러인지, 해결책은 무엇인지 생각해 보세요
+								// => Decorator4.cpp 에서 해결
 	flower.draw();
 
 }
