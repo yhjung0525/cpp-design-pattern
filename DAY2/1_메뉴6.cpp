@@ -69,11 +69,9 @@ public:
 
 
 	}
+
+	BaseMenu* submenu(int idx) { return v[idx]; }
 };
-
-
-
-
 
 int main()
 {
@@ -82,10 +80,15 @@ int main()
 
 	root->add(pm1);
 	root->add(new MenuItem("기타 설정", 1));
+
 	pm1->add(new MenuItem("RED", 11));
 		
 	// 아래 기능에 대해서 생각해 봅시다
-	root->submenu(0);
+	// auto m1 = root->submenu(1); // "색상" PopupMenu 의 포인터 꺼내기
+
+	// 아래 한줄에 대해서 생각해 보세요!!
+	root->submenu(1)->add(new MenuItem("GREEN", 12)); 
+
 
 	root->command();
 
