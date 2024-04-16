@@ -8,7 +8,7 @@ struct Stream
 	virtual void Write(const std::string&) = 0;
 	virtual ~Stream() {}
 
-	// 그외에 Read, IsOpen, Flush() 드으이 다양한 입출력 관련 함수를 약속
+	// 그외에 Read, IsOpen, Flush 등의 다양한 입출력 관련 함수를 약속
 };
 
 class FileStream : public Stream
