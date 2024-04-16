@@ -18,9 +18,11 @@ int main()
 {
 	ICalc* calc = reload_proxy();
 
+	calc->
+
 	// DLL 내부에서 "new" 를 사용해서 Proxy가 생성됩니다.
 	// 더이상 필요없다면 제거해야 합니다.
-	delete calc; // ?? 좋은 코드 일까요 ??
+//	delete calc; // ?? 좋은 코드 일까요 ??
 
 }
 
