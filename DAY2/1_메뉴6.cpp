@@ -87,8 +87,11 @@ int main()
 	// auto m1 = root->submenu(1); // "색상" PopupMenu 의 포인터 꺼내기
 
 	// 아래 한줄에 대해서 생각해 보세요!!
-	root->submenu(1)->add(new MenuItem("GREEN", 12)); 
+	// => 현재 코드는 add 가 PopupMenu 에만 있으므로
+	// => 아래 처럼 사용할수 없고, 캐스팅해야 합니다.
+//	root->submenu(1)->add(new MenuItem("GREEN", 12));  // error
 
+	static_cast<PopupMenu*>(root->submenu(1))->add(new MenuItem("GREEN", 12));  // error
 
 	root->command();
 
