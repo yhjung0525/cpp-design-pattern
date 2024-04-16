@@ -25,7 +25,10 @@ ICalc* CreateProxy()
 // 빌드 하는법 
 // visual studio 가 제공하는 C++ 컴파일러 이름 : cl.exe 입니다.
 
-// cl CalcProxy.cpp /LD			=> CalcProxy.dll 생성
+// cl CalcProxy.cpp /LD	 /link  user32.lib   gdi32.lib   kernel32.lib
+// 
+// => CalcProxy.dll 생성
+// 
 // /LD 가 DLL로 빌드하라는 옵션
 
 // 윈도우 시작 버튼 => visual studio 2022 폴더 => 개발자 명령 프롬프트 선택
