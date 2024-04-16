@@ -55,7 +55,7 @@ int main()
 		{
 			Shape* p = factory.Create(cmd);
 
-			if (p != nullpr)
+			if (p != nullptr)
 				v.push_back(p);
 		}		
 
