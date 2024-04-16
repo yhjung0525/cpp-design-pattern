@@ -29,6 +29,8 @@ int main()
 	// Client 는 Proxy 사용시 교체 가능하게 약한 결합이 되어야 한다.
 
 	ICalc* calc = ? ; // <== 이 부분이 핵심입니다.
+					  // new ICalc 는 안됩니다. 추상클래스이므로 객체생성안됨
+						// 해결책은 "Proxy4.cpp" 에서!!
 
 
 	int n1 = calc->Add(1, 2);
