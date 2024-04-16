@@ -10,10 +10,33 @@ ICalc* reload_proxy()
 	ICalc* calc = f();
 	return calc;
 }
+// 참조계수를 자동으로 관리하는 스마트 포인터를 도입합니다
+// => 이런 용도로 안드로이드안에 sp 라는 스마트 포인터가 있습니다.
+template<typename T> 
+class sp 
+{
+	T* obj;
+public:
+	sp(T* p = nullptr) : obj(p) {}
+	sp(const sp& other) : obj(other.obj) {}
+	~sp() {}
 
+	// raw pointer 와 동일하게 사용하기 위해 -> 와 * 연산자 재정의
+	T* operator->() { return obj; }
+	T& operator*() { return *obj; }
+};
 int main()
 {
+	sp<ICalc> calc1 = new Calc;
+	sp<ICalc> calc2 = calc1;
 
+	std::cout << calc1->Add(10, 20) << std::endl;
+}
+
+
+/*
+int main()
+{
 	ICalc* calc1 = reload_proxy();
 	calc1->AddRef();		
 
@@ -28,6 +51,6 @@ int main()
 }
 
 
-
+*/
 
 
