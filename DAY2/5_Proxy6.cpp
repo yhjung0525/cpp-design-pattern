@@ -17,20 +17,21 @@ class sp
 {
 	T* obj;
 public:
-	sp(T* p = nullptr) : obj(p) {}
-	sp(const sp& other) : obj(other.obj) {}
-	~sp() {}
+	sp(T* p = nullptr) : obj(p) { if (obj) obj->AddRef(); }
+	sp(const sp& other) : obj(other.obj) { if (obj) obj->AddRef(); }
+	~sp() { if (obj) obj->Release(); }
 
 	// raw pointer 와 동일하게 사용하기 위해 -> 와 * 연산자 재정의
 	T* operator->() { return obj; }
 	T& operator*() { return *obj; }
 };
+
 int main()
 {
-	sp<ICalc> calc1 = new Calc;
+	sp<ICalc> calc1 = reload_proxy();
 	sp<ICalc> calc2 = calc1;
-
-	std::cout << calc1->Add(10, 20) << std::endl;
+	 
+	std::cout << calc1->Add(10, 20); // (calc1.operator->())->Add(10,20)
 }
 
 
