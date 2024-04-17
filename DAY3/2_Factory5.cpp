@@ -72,9 +72,19 @@ int main()
 
 
 	// 아래 코드는 결국 factory 에  "1. 객체   2. 클래스" 를 등록하는 코드입니다.
-	// => 
-	factory.Register(1, &Rect::Create);
-	factory.Register(2, &Circle::Create);
+	// => 정확히는 "함수 포인터" 등록이지만, 의미상으로는 "클래스등록" 입니다.
+	// => 객체를 생성하기 위해서 함수 포인터를 등록하므로
+//	factory.Register(1, &Rect::Create);
+//	factory.Register(2, &Circle::Create);
+
+	// 클래스 말고, 자주사용되는 객체를 등록해 봅시다.
+	Rect* redRect = new Rect; // 빨간색, 크기가 10인 사각형이라고 가정
+	Rect* blueRect = new Rect; 
+	Circle* redCircle = new Circle;
+
+	factory.Register(1, redRect);
+	factory.Register(2, blueRect);
+	factory.Register(3, redCircle);
 
 
 
