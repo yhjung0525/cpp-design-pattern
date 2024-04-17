@@ -85,13 +85,13 @@ public:
 };
 
 // 여러 명령을 보관했다가 한번에 실행하는 매크로 명령
-class MacroCommand
+class MacroCommand : public ICommand  // <<=!!! COMPOSITE 패턴의 모양
 {
 	std::vector<ICommand*> v;
 public:
 	void add(ICommand* c) { v.push_back(c); }
 
-	void execute()
+	void execute() override 
 	{
 		for (auto c : v)
 			c->execute();
@@ -110,7 +110,10 @@ int main()
 	mc1->add(new DrawCommand(v));
 	mc1->execute();	// 3개의 명령을 한번에 실행.
 
-
+	MacroCommand* mc2 = new MacroCommand;
+	mc2->add(new AddRectCommand(v));
+	mc2->add( mc1 ); // ????
+	mc2->execute();
 
 
 	ICommand* command = nullptr;
