@@ -73,13 +73,18 @@ public:
 	void draw() override { std::cout << "draw Triangle" << std::endl; }
 	REGISTER(3, Triangle)
 };
-
+// QT 오픈소스(GUI) 에 "Q_OBJECT" 라는 매크로가 있습니다.
+// => Q_OBJECT 매크로가 위처럼 약속된 멤버들을 자동생성하는 기능. 
 
 int main()
 {
 	std::vector<Shape*> v;
 
 	ShapeFactory& factory = ShapeFactory::get_instance();
+
+	// 복습 하실때 아래 멤버 함수 만들어 보세요
+//	factory.ShowRegisterShape(); // 공장에 등록된 모든 제품(도형)을 보여주는
+								 // 멤버 함수
 
 
 	while (1)
