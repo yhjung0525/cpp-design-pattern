@@ -86,6 +86,13 @@ int main()
 
 	ShapeFactory& factory = ShapeFactory::get_instance();
 
+	// 공장에 제품(도형)을 등록 합니다.
+	factory.Register(1, &Rect::Create);
+	factory.Register(2, &Circle::Create);
+
+
+
+
 	while (1)
 	{
 		int cmd;
