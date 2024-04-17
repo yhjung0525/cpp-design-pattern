@@ -85,4 +85,32 @@ int main(int argc, char** argv)
 
 
 
+// 디자인 패턴 23가지는 "용도" 에 따라 3가지 분류를 가지게 됩니다.
+// => 교재 마지막 페이지 참고
+
+// 생성패턴(5가지) : 객체를 생성하기 위해 사용하는 패턴
+// => singleton 
+// => abstract factory 
+// => factory method
+// => prototype 
+// => builder
+
+
+// 구조패턴(7가지) :
+// => composite : 객체의 포함 구조를 tree 모양으로
+// => decorator : 객체에 동적인 기능 추가
+// => adapter   : 인터페이스 불일치를 해결
+// => proxy     : 대행자 만들기
+// => flyweight : 속성이 동일하면 공유.
+// => bridge
+// => facade
+
+
+// 행위패턴(11가지) :
+// => template method : 변하는 것을 가상함수로해서 파생 클래스가 override
+// => strategy        : 알고리즘이 여러개라면 각각을 클래스로설계해서 교체 가능하게
+// => command, mediator, iterator, visitor, chainof responsibility
+//    state, iterpretor, memento, observer
+
+
 
