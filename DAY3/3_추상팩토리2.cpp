@@ -40,8 +40,8 @@ struct OSXEdit : public IEdit
 class IFactory 
 {
 public:
-	IButton* CreateButton() = 0;
-	IEdit* CreateEdit() = 0;
+	virtual IButton* CreateButton() = 0;
+	virtual IEdit* CreateEdit() = 0;
 	virtual ~IFactory() {}
 };
 
