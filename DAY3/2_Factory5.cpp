@@ -29,7 +29,7 @@ public:
 
 	static Shape* Create() { return new Circle; }
 
-	Rect* Clone() override { return new Rect(*this); }
+	Circle* Clone() override { return new Circle(*this); }
 };
 
 
