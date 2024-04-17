@@ -87,6 +87,7 @@ int main()
 	ShapeFactory& factory = ShapeFactory::get_instance();
 
 	// 공장에 제품(도형)을 등록 합니다.
+	// => 새로운 도형이 추가되면 "공장에 등록" 후 사용하면 됩니다.
 	factory.Register(1, &Rect::Create);
 	factory.Register(2, &Circle::Create);
 
