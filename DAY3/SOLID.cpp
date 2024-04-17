@@ -9,7 +9,7 @@ void fn(Animal* p) {}
 Dog d;
 fn(&d); // LSP  만족!!
 
-
+//====================================
 class stack : public std::list<int>
 {
 public:
@@ -55,14 +55,16 @@ class GoodMP3 : public IMP3, public Picture
 {
 };
 
-// DIP : Dependency Inversion Principle 
+// DIP : Dependency Inversion Principle (의존관계 역전의 법칙)
 // => 구체적인 클래스에 의존하지 말고, 인터페이스(추상)에 의존해라.
 class People
 {
 public:
-	void useCamera(HDCamera*) {} // bad
-	void useCamera(ICamera*) {} // good
+	void useCamera(HDCamera*) {} // bad. 교체 불가능.
+	void useCamera(ICamera*) {} // good. 교체 가능.
 };
+
+
 // SRP : Single Responsible Principle
 //  => 하나의 클래스는 하나의 책임만
 
@@ -70,3 +72,33 @@ public:
 
 // 객체지향 설계시 지켜야 하는 5개의 원칙
 // SOLID : SRP, OCP, LSP, ISP, DIP
+
+
+// 디자인 패턴의 핵심
+
+// 1. 변하지 않은 코드에서 변하는 것을 분리 하는것
+// 1-1. 변하는 것을 가상함수로 : template method, factory method
+// 1-1. 변하는 것을 다른 클래스로 : strategy, state, builder
+
+
+// 2. 간접층을 도입해서 문제를 해결하는 것
+// 왜.. 간접층을 만드는가에 따라 패턴의 이름이 달라 집니다.
+// 
+// 사용자	===============> stack ================> list
+//									=> 인터페이스의 변경 : adapter
+// 
+// 사용자	===============> MP3   ================> IMP3
+//									=> Update 를 위해서 : bridge
+// 
+// 사용자	===============> Calc  ================> Server
+//									=> 다양한 의도를 가진 대행자 : proxy
+// 
+// 사용자	===============> TCPServer ============> Socket, IPAddress
+//									=> 사용법을 단순화 하기 위해 : facade
+
+// 명령의 캡슐화 : command
+// 통보, 열거, 방문 : observer, iterator, visitor, chain of responsibility
+// 객체의 저장 : memento
+// => 교재 마지막 페이지 참고
+
+// iterpretor 패턴 : 컴파일러 파서 만들때 사용했던 패턴, 지금의 거의 사용되지 않음. 
